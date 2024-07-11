@@ -1,0 +1,5 @@
+pandas
+apache-airflow-providers-redis
+apache-airflow-providers-microsoft-mssql[common.sql]
+apache-airflow-providers-postgres[amazon]
+apache-airflow-providers-celery[cncf.kubernetes]

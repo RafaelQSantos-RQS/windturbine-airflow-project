@@ -1,4 +1,5 @@
 pandas
+pyarrow
 apache-airflow-providers-redis
 apache-airflow-providers-microsoft-mssql[common.sql]
 apache-airflow-providers-postgres[amazon]

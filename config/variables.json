@@ -1,0 +1,5 @@
+{
+    "csv_path_file": "/opt/airflow/data/data.csv",
+    "json_path_file": "/opt/airflow/data/data.json",
+    "parquet_path_file": "/opt/airflow/data/data.parquet"
+}

@@ -4,11 +4,6 @@ from time import sleep
 from datetime import datetime
 from random import uniform,randint
 
-id = {
-    'json_windmill':0,
-    'csv_windmill':0,
-    'parquet_windmill':0
-}
 
 def gerar_registro() -> dict[str,str]:
     power_factor = uniform(0.7,1)
@@ -22,15 +17,32 @@ def gerar_registro() -> dict[str,str]:
     }
     return register
 
+temperature_id = 1
 while True:
-    windmills = id.keys() # Gera uma lista com todos os windmills
-    current_windmill = windmills[randint(0,len(windmills)-1)] # Escolhe um windmill aleatório da lista
-    register = gerar_registro() # Gera o registro
-    id = windmills[current_windmill] + 1
-    windmills[current_windmill] = id
-    register['idtemp'] = str(id)
-    register['name'] = current_windmill
+    # Gera uma lista com todos os windmills
+    windmills_list = ['json_windmill','csv_windmill','parquet_windmill']
+    # Gera o registro
+    register = gerar_registro() 
     
-    print(register)
-    sleep(15)
+    count = temperature_id
+    for current_windmill_name in windmills_list:
+
+        register['idtemp'] = str(count)
+        register['name'] = current_windmill_name
+        
+        match current_windmill_name:
+            case 'json_windmill':
+                with open('data/data.json','w') as json_file:
+                    json_file.write(json.dumps(register))
+            case 'csv_windmill':
+                df = pd.DataFrame([register])
+                df.to_csv('data/data.csv',index=False)
+            case 'parquet_windmill':
+                df = pd.DataFrame([register])
+                df.to_parquet('data/data.parquet',index=False)
+
+        count+=1
+
+    sleep(5)
+    temperature_id += 3
     

@@ -44,7 +44,7 @@ Processar e armazenar os dados no banco de dados.
 Enviar um email informando o status da temperatura (normal ou alterada) para cada turbina.
 Esta configuração permite explorar a flexibilidade do Airflow em lidar com diferentes formatos de dados e consolidar múltiplos fluxos de trabalho em uma única DAG.
 
-![DAG alterada](img\altered-dag.png)
+![DAG alterada](img/altered-dag.png)
 
 ## Alterações no Escopo do Projeto
 Para simplificar a execução e melhorar a organização do projeto, foram feitas as seguintes alterações:
